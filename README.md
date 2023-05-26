@@ -17,3 +17,10 @@ Este administrador de escuela cuenta con la capacidad de administrar profesores 
  3. El diagrama de clases proporciona una representación de las materias y los cursos ofrecidos por la escuela. Permite asignar profesores a las materias, así como alumnos a los cursos correspondientes.
  4. El diagrama de clases incluye la representación de las aulas disponibles en la escuela. Se definen atributos relacionados, como el número de aula y la capacidad, para facilitar la asignación adecuada de aulas a los cursos.
  5. El diagrama de clases permite asignar departamentos a los administrativos de la escuela. Esto ayuda a organizar y estructurar la gestión administrativa de la escuela, permitiendo una asignación eficiente de responsabilidades y tareas.
+
+***
+
+## Correcciones
+
+***Se corrigió el UML para que fuera más congruente con sus métodos
+
