@@ -5,10 +5,10 @@
  * 24/05/2023
  */
 
- /*
-  * Clase Aula contiene los datos
-  * necesarios para registrar a una aula.
-  */
+/*
+ * Clase Aula contiene los datos
+ * necesarios para registrar a una aula.
+ */
 
 #ifndef AULA_H_
 #define AULA_H_
@@ -18,19 +18,17 @@
 #include <vector>
 using namespace std;
 
-class Aula{
+class Aula {
 private:
   // Variables iniciales
-  string edificio; 
+  string edificio;
   int numero;
   int capacidad;
+
 public:
   // Constructor
-  Aula(string edificio, int numero, int capacidad){
-    this->edificio = edificio;
-    this->numero = numero;
-    this->capacidad = capacidad;
-  }
+  Aula() {}
+  Aula(string edificio, int numero, int capacidad);
 
   // Getters
   string get_edificio();
@@ -41,8 +39,15 @@ public:
   void set_edificio(string);
   void set_numero(int);
   void set_capacidad(int);
-
 };
+
+// Constructor
+
+Aula::Aula(string edificio, int numero, int capacidad) {
+  this->edificio = edificio;
+  this->numero = numero;
+  this->capacidad = capacidad;
+}
 
 // Getters
 
@@ -51,23 +56,19 @@ public:
  *
  *
  * @return edificio
-*/
+ */
 
-string Aula::get_edificio(){
-  return edificio;
-}
+string Aula::get_edificio() { return edificio; }
 
 /**
- * Retorna el numero de salon en 
+ * Retorna el numero de salon en
  * el que se encuentra el aula
  *
  *
  * @return numero
-*/
+ */
 
-int Aula::get_numero(){
-  return numero;
-}
+int Aula::get_numero() { return numero; }
 
 /**
  * Retorna la capacidad que tiene
@@ -75,11 +76,9 @@ int Aula::get_numero(){
  *
  *
  * @return capacidad
-*/
+ */
 
-int Aula::get_capacidad(){
-  return capacidad;
-}
+int Aula::get_capacidad() { return capacidad; }
 
 // Setters
 
@@ -89,11 +88,9 @@ int Aula::get_capacidad(){
  *
  * @param
  * @return
-*/
+ */
 
-void Aula::set_edificio(string edificio){
-  this->edificio = edificio;
-}
+void Aula::set_edificio(string edificio) { this->edificio = edificio; }
 
 /**
  * Actualiza el numero de salon en donde
@@ -101,22 +98,17 @@ void Aula::set_edificio(string edificio){
  *
  * @param
  * @return
-*/
+ */
 
-void Aula::set_numero(int numero){
-  this->numero = numero;
-}
+void Aula::set_numero(int numero) { this->numero = numero; }
 
 /**
  * Actualiza la capacidad del aula
  *
  * @param
  * @return
-*/
+ */
 
-void Aula::set_capacidad(int capacidad){
-  this->capacidad = capacidad;
-}
-
+void Aula::set_capacidad(int capacidad) { this->capacidad = capacidad; }
 
 #endif // AULA_H_
