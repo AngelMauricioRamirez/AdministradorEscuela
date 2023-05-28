@@ -28,9 +28,7 @@ public:
   // Constructor
   Administrativo() {}
   Administrativo(string nombre, int edad, string telefono, string direccion,
-                 string departamento)
-      : Persona(nombre, edad, telefono, direccion), departamento(departamento) {
-  }
+                 string departamento);
 
   // Getters
   string get_departamento();
@@ -38,6 +36,14 @@ public:
   // Setters
   void set_departamento(string);
 };
+
+// Constructor
+
+Administrativo::Administrativo(string nombre, int edad, string telefono,
+                               string direccion, string departamento)
+    : Persona(nombre, edad, telefono, direccion) {
+  this->departamento = departamento;
+}
 
 // Administrativo Getters
 
