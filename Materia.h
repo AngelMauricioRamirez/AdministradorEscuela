@@ -5,10 +5,10 @@
  * 24/05/2023
  */
 
- /*
-  * Clase Materia contiene los datos
-  * necesarios para registrar a una materia.
-  */
+/*
+ * Clase Materia contiene los datos
+ * necesarios para registrar a una materia.
+ */
 
 #ifndef MATERIA_H_
 #define MATERIA_H_
@@ -19,22 +19,19 @@
 #include <vector>
 using namespace std;
 
-class Materia{
+class Materia {
 private:
   // Variables iniciales
-  string nombre; 
+  string nombre;
   int nivel;
   string profesor;
   Aula aula;
   double calificacion;
+
 public:
   // Constructor
-  Materia(string nombre, int nivel, string profesor, double calificacion, string edificio, int numero, int capacidad) : aula(edificio, numero, capacidad){
-    this->nombre = nombre;
-    this->nivel = nivel;
-    this->profesor = profesor;
-    this->calificacion = calificacion;
-  }
+  Materia(string nombre, int nivel, string profesor, double calificacion,
+          string edificio, int numero, int capacidad);
 
   // Getters
   string get_nombre();
@@ -49,8 +46,18 @@ public:
   void set_profesor(string);
   void set_aula(string, int, int);
   void set_calificacion(double);
-
 };
+
+// Constructor
+
+Materia::Materia(string nombre, int nivel, string profesor, double calificacion,
+                 string edificio, int numero, int capacidad)
+    : aula(edificio, numero, capacidad) {
+  this->nombre = nombre;
+  this->nivel = nivel;
+  this->profesor = profesor;
+  this->calificacion = calificacion;
+}
 
 // Getters
 
@@ -60,34 +67,28 @@ public:
  *
  *
  * @return nombre
-*/
+ */
 
-string Materia::get_nombre(){
-  return nombre;
-}
+string Materia::get_nombre() { return nombre; }
 
 /**
  * Retorna el nivel de la materia
  *
  *
  * @return nivel
-*/
+ */
 
-int Materia::get_nivel(){
-  return nivel;
-}
+int Materia::get_nivel() { return nivel; }
 
 /**
- * Retorna el nombre del profesor que 
+ * Retorna el nombre del profesor que
  * dara la materia
  *
  *
  * @return profesor
-*/
+ */
 
-string Materia::get_profesor(){
-  return profesor;
-}
+string Materia::get_profesor() { return profesor; }
 
 /**
  * Retorna el Aula donde se va a tomar
@@ -95,61 +96,51 @@ string Materia::get_profesor(){
  *
  *
  * @return aula
-*/
+ */
 
-Aula Materia::get_aula(){
-  return aula;
-}
+Aula Materia::get_aula() { return aula; }
 
 /**
- * Retorna la calificacion que se tiene 
+ * Retorna la calificacion que se tiene
  * registrada en la materia
  *
  *
  * @return calificacion
-*/
+ */
 
-double Materia::get_calificacion(){
-  return calificacion;
-}
+double Materia::get_calificacion() { return calificacion; }
 
 // Setters
 
 /**
- * Actualiza el nombre que se tiene 
+ * Actualiza el nombre que se tiene
  * en el la materia
  *
  * @param
  * @return
-*/
+ */
 
-void Materia::set_nombre(string nombre){
-  this->nombre = nombre;
-}
+void Materia::set_nombre(string nombre) { this->nombre = nombre; }
 
 /**
- * Actualiza el nivel que se tiene 
+ * Actualiza el nivel que se tiene
  * en la materia
  *
  * @param
  * @return
-*/
+ */
 
-void Materia::set_nivel(int nivel){
-  this->nivel = nivel;
-}
+void Materia::set_nivel(int nivel) { this->nivel = nivel; }
 
 /**
- * Actualiza el nombre del profesor 
+ * Actualiza el nombre del profesor
  * que da la materia
  *
  * @param
  * @return
-*/
+ */
 
-void Materia::set_profesor(string profesor){
-  this->profesor = profesor;
-}
+void Materia::set_profesor(string profesor) { this->profesor = profesor; }
 
 /**
  * Actualiza el aula en donde se va a tomar
@@ -158,9 +149,9 @@ void Materia::set_profesor(string profesor){
  *
  * @param
  * @return
-*/
+ */
 
-void Materia::set_aula(string edificio, int numero, int capacidad){
+void Materia::set_aula(string edificio, int numero, int capacidad) {
   aula.set_edificio(edificio);
   aula.set_numero(numero);
   aula.set_capacidad(capacidad);
@@ -172,11 +163,10 @@ void Materia::set_aula(string edificio, int numero, int capacidad){
  *
  * @param
  * @return
-*/
+ */
 
-void Materia::set_calificacion(double calificacion){
+void Materia::set_calificacion(double calificacion) {
   this->calificacion = calificacion;
 }
-
 
 #endif // MATERIA_H_
