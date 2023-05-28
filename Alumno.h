@@ -28,9 +28,7 @@ public:
   // Constructor
   Alumno() : Persona() {}
   Alumno(string nombre, int edad, string telefono, string direccion,
-         string matricula)
-      : Persona(nombre, edad, telefono, direccion), matricula(matricula),
-        cursos() {}
+         string matricula);
 
   // Getters
   string get_matricula();
@@ -44,6 +42,14 @@ public:
   void remove_curso(string);
   void show_cursos();
 };
+
+// Constructor
+
+Alumno::Alumno(string nombre, int edad, string telefono, string direccion,
+               string matricula)
+    : Persona(nombre, edad, telefono, direccion) {
+  this->matricula = matricula;
+}
 
 // Alumno Getters
 
