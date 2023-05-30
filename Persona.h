@@ -33,6 +33,8 @@ public:
   Persona() {}
   Persona(string nombre, int edad, string telefono, string direccion);
 
+  virtual ~Persona() {};
+
   // Getters
   string get_nombre();
   int get_edad();

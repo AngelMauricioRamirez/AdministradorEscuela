@@ -26,9 +26,11 @@ private:
 
 public:
   // Constructor
-  Administrativo() {}
+  Administrativo();
   Administrativo(string nombre, int edad, string telefono, string direccion,
                  string departamento);
+
+  ~Administrativo() {}
 
   // Getters
   string get_departamento();
