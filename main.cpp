@@ -2,9 +2,12 @@
 #include "Curso.h"
 #include "Escuela.h"
 #include <iostream>
+#include "menu.cpp"
 using namespace std;
 
 int main() {
+
+  display_menu();
 
   Escuela escuela("Tec", "Qro", "442");
 
