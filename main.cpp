@@ -7,9 +7,14 @@ using namespace std;
 
 int main() {
 
-  display_menu();
-
   Escuela escuela("Tec", "Qro", "442");
+
+  /*
+   Para la revision de proyecto, aun no está listo el menú
+   por lo que se puede observar la implementación del polimorfismo
+   en el main.
+  */
+  //display_menu(escuela);
 
   Curso *c1 = new Curso("f101", "Mates", 2, "Momox", 0.0, "Ingenierias", 3, 40); 
   Curso *c2 = new Curso("f102", "Bio", 4, "Eloina", 0.0, "Alimentos", 4, 30); 
