@@ -68,11 +68,44 @@ Escuela::Escuela(string nombre, string direccion, string telefono) {
 
 // Getters
 
+/**
+ * Retorna el nombre de
+ * la escuela
+ *
+ * @return nombre
+ */
+
 string Escuela::get_nombre() { return nombre; };
+
+/**
+ * Retorna la direccion de
+ * la escuela
+ *
+ * @return direccion
+ */
 
 string Escuela::get_direccion() { return direccion; };
 
+/**
+ * Retorna el telefono de
+ * la escuela
+ *
+ * @return telefono
+ */
+
 string Escuela::get_telefono() { return telefono; };
+
+/**
+ * Busca un alumno por su matricula y retorna
+ * el objeto que coincida con la matricula,
+ * realizando polimorfismo de la clase padre
+ * Persona.
+ *
+ *
+ * @param
+ * @return dynamic_cast<Alumno *>(persona)
+ * @return nullptr
+ */
 
 Alumno *Escuela::get_alumno(string matricula) {
   for (Persona *persona : personas) {
@@ -83,6 +116,18 @@ Alumno *Escuela::get_alumno(string matricula) {
   return nullptr; // El alumno no se encontró
 }
 
+/**
+ * Busca un profesor por su nombre y especialidad 
+ * y retorna el objeto que coincida con los datos,
+ * realizando polimorfismo de la clase padre
+ * Persona.
+ *
+ *
+ * @param
+ * @return dynamic_cast<Profesor *>(persona)
+ * @return nullptr
+ */
+
 Profesor *Escuela::get_profesor(string nombre, string especialidad) {
   for (Persona *persona : personas) {
     if (persona->get_nombre() == nombre && dynamic_cast<Profesor *>(persona)->get_especialidad() == especialidad) {
@@ -91,6 +136,18 @@ Profesor *Escuela::get_profesor(string nombre, string especialidad) {
   }
   return nullptr; // El profesor no se encontró
 }
+
+/**
+ * Busca un administrativo por su nombre y departamento 
+ * y retorna el objeto que coincida con los datos,
+ * realizando polimorfismo de la clase padre
+ * Persona.
+ *
+ *
+ * @param
+ * @return dynamic_cast<Administrativo *>(persona)
+ * @return nullptr
+ */
 
 Administrativo *Escuela::get_administrativo(string nombre, string departamento){
   for (Persona *persona : personas) {
@@ -103,19 +160,61 @@ Administrativo *Escuela::get_administrativo(string nombre, string departamento){
 
 // Setters
 
+/**
+ * Actualiza el nombre que se tiene
+ * registrado de la escuela
+ *
+ * @param
+ * @return
+ */
+
 void Escuela::set_nombre(string nombre) { this->nombre = nombre; }
 
+/**
+ * Actualiza la direccion que se tiene
+ * registrada de la escuela
+ *
+ * @param
+ * @return
+ */
+
 void Escuela::set_direccion(string direccion) { this->direccion = direccion; }
+
+/**
+ * Actualiza el telefono que se tiene
+ * registrado de la escuela
+ *
+ * @param
+ * @return
+ */
 
 void Escuela::set_telefono(string telefono) { this->telefono = telefono; }
 
 // Metodos
+
+/**
+ * Mustra todas las personas que 
+ * se tienen registradas en la
+ * escuela
+ *
+ * @param
+ * @return
+ */
 
 void Escuela::show_personas() {
   for (Persona *persona : personas) {
     cout << persona->get_nombre() << "\n";
   }
 }
+
+/**
+ * Agrega un nuevo alumno a 
+ * la escuela en el vector de 
+ * personas
+ *
+ * @param
+ * @return
+ */
 
 void Escuela::agregar_alumno(string nombre, int edad, string telefono,
                              string direccion, string matricula) {
@@ -124,12 +223,30 @@ void Escuela::agregar_alumno(string nombre, int edad, string telefono,
   personas.push_back(persona);
 }
 
+/**
+ * Agrega un nuevo profesor a 
+ * la escuela en el vector de 
+ * personas
+ *
+ * @param
+ * @return
+ */
+
 void Escuela::agregar_profesor(string nombre, int edad, string telefono,
                              string direccion, string especialidad) {
   Persona *persona = new Profesor(nombre, edad, telefono, direccion, especialidad);
 
   personas.push_back(persona);
 }
+
+/**
+ * Agrega un nuevo administrativo a 
+ * la escuela en el vector de 
+ * personas
+ *
+ * @param
+ * @return
+ */
 
 void Escuela::agregar_administrativo(string nombre, int edad, string telefono,
                               string direccion, string departamento){
