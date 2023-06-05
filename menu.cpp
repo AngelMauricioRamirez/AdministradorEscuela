@@ -101,6 +101,7 @@ void display_menu(Escuela &escuela) {
                     std::cout << "------------------------------ \n";
                     std::cout << "1) Agregar curso \n";
                     std::cout << "2) Asignar calificacion \n";
+                    std::cout << "3) Remover curso \n";
                     std::cin >> op;
 
                     switch (op) {
@@ -159,6 +160,24 @@ void display_menu(Escuela &escuela) {
 
                             break;
                         }
+
+                        case 3: {
+                            escuela.get_alumno(argumento)->show_cursos();
+                            std::cout << "Proporciona el nombre del curso: \n";
+                            std::cin.ignore();
+                            std::getline(std::cin, nombreCurso);
+
+                            Curso *curso = escuela.get_alumno(argumento)->get_curso(nombreCurso);
+                            if (curso != nullptr) {
+                                escuela.get_alumno(argumento)->remove_curso(nombreCurso);
+                                std::cout << "Se ha removido el curso! \n";
+                            } else {
+                                std::cout << "No se encontro el curso! \n";
+                            }
+          
+                            break;
+                        }
+
                         default:
                             break;
                     }
