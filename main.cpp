@@ -1,9 +1,5 @@
-#include "Alumno.h"
-#include "Curso.h"
-#include "Escuela.h"
 #include <iostream>
 #include "menu.cpp"
-using namespace std;
 
 int main() {
 
