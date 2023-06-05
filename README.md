@@ -2,11 +2,13 @@
 ## Prerrequisitos
 Haber instalado un [compilador de c++](https://sourceforge.net/projects/mingw/files/latest/download)
 
->compilar con: "g++ main.cpp"
->1- correr en windows: "a.exe"
+> compilar con: "g++ main.cpp"
+
+> 1- correr en windows: "a.exe"
+
 > 2- correr en windows: "g++ -o (Nombre del ejecutable) main.cpp"
 
->correr en linux: "/a.out"
+> correr en linux: "/a.out"
 
 Este administrador de escuela cuenta con la capacidad de administrar profesores y alumnos registrados, así como las materias, cursos y aulas, su objetivo es brindar una representación visual y estructurada del sistema que permita comprender y diseñar el funcionamiento de la gestión académica y administrativa de la escuela.
 
