@@ -28,9 +28,13 @@ int main() {
   escuela.get_alumno("A01710158")->add_curso(c2);
   c1->remove_materia("Mates");
   std::cout << escuela.get_profesor("Momox", "Fisica, Matematicas")->get_especialidad() << "\n";
+  std::cout << "-------------\n";
   escuela.get_alumno("A01710158")->show_cursos();
   std::cout << "-------------\n";
   c1->show_materias();
+  std::cout << "-------------\n";
+  escuela.get_alumno("A01710158")->remove_curso("f101");
+  escuela.get_alumno("A01710158")->show_cursos();
 
   delete c1;
   delete c2;

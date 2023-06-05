@@ -121,6 +121,13 @@ void Alumno::add_curso(Curso *curso) {
 
 void Alumno::remove_curso(string nombreCurso) {
   // Se tiene que remover el curso buscandolo por su nombre
+  for(int i = 0; i < cursos.size(); i++){
+    if(cursos[i]->get_nombre() == nombreCurso){
+      delete cursos[i];
+      cursos.erase(cursos.begin() + i);
+      break; // Termina el bucle después de encontrar y eliminar la materia
+    }
+  }
 }
 
 /**
