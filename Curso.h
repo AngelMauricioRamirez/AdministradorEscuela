@@ -39,7 +39,7 @@ public:
   void set_materia(string, int, string, double, string, int, int);
   // Metodos
   void show_materias();
-  // void remove_materia(string);
+  void remove_materia(string);
 };
 
 // Constructor
@@ -133,8 +133,24 @@ void Curso::show_materias() {
   }
 }
 
-// void Curso::remove_materia(string nombre){
+/**
+ * Elimina una materia que se tenga registrada en el curso,
+ * se busca por el nombre de la materia y elimina la materia
+ * del curso.
+ *
+ *
+ * @return
+ */
+
+void Curso::remove_materia(string nombre){
 //  Elimina la materia buscada por el nombre
-//}
+  for(int i = 0; i < materias.size(); i++){
+    if(materias[i]->get_nombre() == nombre){
+      delete materias[i];
+      materias.erase(materias.begin() + i);
+      break; // Termina el bucle después de encontrar y eliminar la materia
+    }
+  }
+}
 
 #endif // CURSO_H_
