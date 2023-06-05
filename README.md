@@ -72,7 +72,7 @@ Proporciona la opcion:
 
 ***Se corrigió el UML para que fuera más congruente con sus métodos.
 
-***Se corrigieron los constructores de cada clase para que el código mejor ordenado.
+***Se corrigieron los constructores de cada clase para que el código quede mejor ordenado.
 
 ***Se agregaron las consideraciones del programa.
 
