@@ -1,4 +1,3 @@
-#include <iostream>
 #include "menu.cpp"
 
 int main() {
@@ -8,7 +7,7 @@ int main() {
   /*
    Para la revision de proyecto, aun no está listo el menú
    por lo que se puede observar la implementación del polimorfismo
-   en el main.
+   en el main y en la clase Escuela.h.
   */
   //display_menu(escuela);
 
