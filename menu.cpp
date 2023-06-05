@@ -66,7 +66,7 @@ void display_menu(Escuela &escuela) {
                 std::getline(std::cin, telefono);
                 std::cout << "Proporciona la direccion: \n";
                 std::getline(std::cin, direccion);
-                std::cout << "Proporciona la matricula: \n";
+                std::cout << "Proporciona la especialidad: \n";
                 std::getline(std::cin, argumento);
 
                 escuela.agregar_profesor(nombre, edad, telefono, direccion, argumento);
@@ -83,7 +83,7 @@ void display_menu(Escuela &escuela) {
                 std::getline(std::cin, telefono);
                 std::cout << "Proporciona la direccion: \n";
                 std::getline(std::cin, direccion);
-                std::cout << "Proporciona la matricula: \n";
+                std::cout << "Proporciona el departamento: \n";
                 std::getline(std::cin, argumento);
 
                 escuela.agregar_administrativo(nombre, edad, telefono, direccion, argumento);
@@ -120,10 +120,16 @@ void display_menu(Escuela &escuela) {
                             bool encontrado = false;
                             for (Curso *curso : cursos) {
                                 if (curso->get_nombre() == nombreCurso) {
-                                    escuela.get_alumno(argumento)->add_curso(curso);
-                                    std::cout << "Curso agregado! \n";
-                                    encontrado = true;
-                                    break;
+                                    if(escuela.get_alumno(argumento)->get_curso(nombreCurso) == nullptr){
+                                        escuela.get_alumno(argumento)->add_curso(curso);
+                                        std::cout << "Curso agregado! \n";
+                                        encontrado = true;
+                                        break;
+                                    }
+                                    else{
+                                        std::cout << "El curso ya se tiene registrado! \n";
+                                        encontrado = true;
+                                    }
                                 }
                             }
 
