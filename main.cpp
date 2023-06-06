@@ -9,7 +9,7 @@ int main() {
    por lo que se puede observar la implementación del polimorfismo
    en el main y en la clase Escuela.h.
   */
-  //display_menu(escuela);
+  display_menu(escuela);
 
   Curso *c1 = new Curso("f101", "Mates", 2, "Momox", 0.0, "Ingenierias", 3, 40); 
   c1->set_materia("Quimica", 4, "Martha", 0.0, "Biologia", 4, 30);

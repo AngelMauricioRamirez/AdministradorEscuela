@@ -1,6 +1,18 @@
-#include "Alumno.h"
-#include "Curso.h"
-#include "Escuela.h"
+/*
+ * Proyecto AdministradorEscuela
+ * Angel Mauricio Ramirez Herrera
+ * A01710158
+ * 05/06/2023
+ */
+
+/*
+ * Menú.cpp contiene un menú para 
+ * administrar los datos de personas
+ * que se encuentran en una escuela.
+ */
+
+#include "headers/Curso.h"
+#include "headers/Escuela.h"
 #include <iostream>
 #include <vector>
 #include <string>
