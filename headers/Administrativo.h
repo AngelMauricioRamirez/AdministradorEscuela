@@ -37,9 +37,16 @@ public:
 
   // Setters
   void set_departamento(string);
+
+  // Metodos
+  string get_info() override;
 };
 
 // Constructor
+
+Administrativo::Administrativo() : Persona(){
+  departamento = "";
+}
 
 Administrativo::Administrativo(string nombre, int edad, string telefono,
                                string direccion, string departamento)
@@ -72,5 +79,22 @@ string Administrativo::get_departamento() { return departamento; }
 void Administrativo::set_departamento(string departamento) {
   this->departamento = departamento;
 }
+
+// Metodos
+
+/**
+ * Retorna un string con toda la información del
+ * administrativo
+ *
+ * @return
+ */
+
+string Administrativo::get_info(){
+  stringstream aux;
+  aux << "\nNombre: " << nombre << " Edad: " << edad << 
+  " Telefono: " << telefono << " Direccion: " << direccion << " Departamento: " << departamento << "\n";
+  return aux.str();
+}
+
 
 #endif // ADMINISTRATIVO_H_

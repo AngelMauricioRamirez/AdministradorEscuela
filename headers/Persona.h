@@ -16,12 +16,13 @@
 
 #include "Curso.h"
 #include <iostream>
+#include <sstream>
 #include <string>
 #include <vector>
 using namespace std;
 
 class Persona {
-private:
+protected:
   // Variables iniciales
   string nombre;
   int edad;
@@ -30,7 +31,7 @@ private:
 
 public:
   // Constructor
-  Persona() {}
+  Persona();
   Persona(string nombre, int edad, string telefono, string direccion);
 
   virtual ~Persona() {};
@@ -46,9 +47,19 @@ public:
   void set_edad(int);
   void set_telefono(string);
   void set_direccion(string);
+
+  // Metodos
+  virtual string get_info() = 0;
 };
 
 // Constructor
+
+Persona::Persona(){
+  nombre = "";
+  edad = 0;
+  telefono = "";
+  direccion = "";
+}
 
 Persona::Persona(string nombre, int edad, string telefono, string direccion) {
   this->nombre = nombre;

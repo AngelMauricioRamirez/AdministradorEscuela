@@ -26,7 +26,7 @@ private:
 
 public:
   // Constructor
-  Profesor() {}
+  Profesor();
   Profesor(string nombre, int edad, string telefono, string direccion,
            string especialidad);
 
@@ -35,9 +35,16 @@ public:
 
   // Setters
   void set_especialidad(string);
+
+  // Metodos
+  string get_info() override;
 };
 
 // Constructor
+
+Profesor::Profesor() : Persona() {
+  especialidad = "";
+}
 
 Profesor::Profesor(string nombre, int edad, string telefono, string direccion,
                    string especialidad)
@@ -69,6 +76,22 @@ string Profesor::get_especialidad() { return especialidad; }
 
 void Profesor::set_especialidad(string especialidad) {
   this->especialidad = especialidad;
+}
+
+// Metodos
+
+/**
+ * Retorna un string con toda la información del
+ * profesor
+ *
+ * @return
+ */
+
+string Profesor::get_info(){
+  stringstream aux;
+  aux << "\nNombre: " << nombre << " Edad: " << edad << 
+  " Telefono: " << telefono << " Direccion: " << direccion << " Especialidad: " << especialidad << "\n";
+  return aux.str();
 }
 
 #endif // PROFESOR_H_

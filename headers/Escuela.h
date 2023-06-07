@@ -203,7 +203,7 @@ void Escuela::set_telefono(string telefono) { this->telefono = telefono; }
 
 void Escuela::show_personas() {
   for (Persona *persona : personas) {
-    cout << persona->get_nombre() << "\n";
+    cout << persona->get_info() << "\n";
   }
 }
 

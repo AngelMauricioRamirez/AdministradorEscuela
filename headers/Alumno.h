@@ -43,9 +43,14 @@ public:
   void add_curso(Curso *);
   void remove_curso(string);
   void show_cursos();
+  string get_info() override;
 };
 
 // Constructor
+
+Alumno::Alumno() : Persona(){
+  matricula = "";
+}
 
 Alumno::Alumno(string nombre, int edad, string telefono, string direccion,
                string matricula)
@@ -143,6 +148,20 @@ void Alumno::show_cursos() {
     cout << "- curso -" << curso->get_nombre() << "\n";
     curso->show_materias();
   }
+}
+
+/**
+ * Retorna un string con toda la información del
+ * alumno
+ *
+ * @return
+ */
+
+string Alumno::get_info(){
+  stringstream aux;
+  aux << "\nNombre: " << nombre << " Edad: " << edad << 
+  " Telefono: " << telefono << " Direccion: " << direccion << " Matricula: " << matricula << "\n";
+  return aux.str();
 }
 
 #endif // ALUMNO_H_
