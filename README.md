@@ -70,6 +70,30 @@ Proporciona la opcion:
 
 ***
 
+## Casos de falla
+
+Entrada incorrecta de datos:
+
+- Si se ingresan datos no válidos al solicitar información del alumno, profesor o administrativo (por ejemplo, ingresar una cadena en lugar de un número para la edad), podría causar errores o comportamientos inesperados.
+
+Falta de manejo de memoria:
+
+- No se realiza una liberación de memoria adecuada para los objetos Curso creados dinámicamente con new. Esto puede conducir a fugas de memoria.
+
+Búsqueda de cursos y materias:
+
+- Al buscar cursos y materias en las listas, se utilizan comparaciones de cadenas exactas. Si hay errores tipográficos o diferencias de mayúsculas y minúsculas en los nombres proporcionados por el usuario, la búsqueda no será exitosa.
+
+Inserción duplicada de cursos:
+
+- Si se intenta agregar un curso que ya está registrado para un alumno, actualmente se muestra un mensaje indicando que el curso ya está registrado, pero no se impide la inserción duplicada. Esto podría llevar a datos redundantes o incoherentes en la estructura de datos.
+
+Manejo de excepciones:
+
+- El código no maneja explícitamente excepciones que puedan ocurrir durante la entrada de datos o la ejecución de operaciones. Si ocurren excepciones, el programa podría finalizar abruptamente sin una salida adecuada.
+
+***
+
 ## Correcciones
 
 ***Se corrigió el UML para que fuera más congruente con sus métodos.
