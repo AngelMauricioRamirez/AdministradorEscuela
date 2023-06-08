@@ -27,8 +27,9 @@ private:
 public:
   // Constructor
   Profesor();
-  Profesor(string nombre, int edad, string telefono, string direccion,
-           string especialidad);
+  Profesor(string, int, string, string, string);
+
+  ~Profesor() {}
 
   // Getters
   string get_especialidad();

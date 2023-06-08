@@ -27,8 +27,10 @@ private:
 
 public:
   // Constructor
-  Aula() {}
-  Aula(string edificio, int numero, int capacidad);
+  Aula();
+  Aula(string, int, int);
+
+  ~Aula() {}
 
   // Getters
   string get_edificio();
@@ -42,6 +44,12 @@ public:
 };
 
 // Constructor
+
+Aula::Aula(){
+  edificio = "";
+  numero = 0;
+  capacidad = 0;
+}
 
 Aula::Aula(string edificio, int numero, int capacidad) {
   this->edificio = edificio;

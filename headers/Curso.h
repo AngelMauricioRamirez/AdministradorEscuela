@@ -27,9 +27,10 @@ private:
 
 public:
   // Constructor
-  Curso() {}
-  Curso(string nombre, string nombreMat, int nivelMat, string profesorMat,
-        double calificacionMat, string edificio, int numero, int capacidad);
+  Curso();
+  Curso(string, string, int, string, double, string, int, int);
+
+  ~Curso() {}
 
   // Getters
   string get_nombre();
@@ -43,6 +44,10 @@ public:
 };
 
 // Constructor
+
+Curso::Curso() {
+  nombre = "";
+}
 
 Curso::Curso(string nombre, string nombreMat, int nivelMat, string profesorMat,
              double calificacionMat, string edificio, int numero,

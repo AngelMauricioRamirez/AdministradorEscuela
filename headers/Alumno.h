@@ -27,10 +27,9 @@ private:
 public:
   // Constructor
   Alumno();
-  Alumno(string nombre, int edad, string telefono, string direccion,
-         string matricula);
+  Alumno(string, int, string, string, string);
 
-  ~Alumno(){};
+  ~Alumno() {};
 
   // Getters
   string get_matricula();

@@ -35,8 +35,10 @@ private:
 
 public:
   // Constructor
-  Escuela() {}
-  Escuela(string nombre, string direccion, string telefono);
+  Escuela();
+  Escuela(string, string, string);
+
+  ~Escuela() {}
 
   // Getters
   string get_nombre();
@@ -59,6 +61,12 @@ public:
 };
 
 // Constructor
+
+Escuela::Escuela() {
+  nombre = "";
+  telefono = "";
+  direccion = "";
+}
 
 Escuela::Escuela(string nombre, string direccion, string telefono) {
   this->nombre = nombre;

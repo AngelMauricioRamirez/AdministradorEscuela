@@ -32,7 +32,7 @@ protected:
 public:
   // Constructor
   Persona();
-  Persona(string nombre, int edad, string telefono, string direccion);
+  Persona(string, int, string, string);
 
   virtual ~Persona() {};
 

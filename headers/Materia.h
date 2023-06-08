@@ -30,8 +30,8 @@ private:
 
 public:
   // Constructor
-  Materia(string nombre, int nivel, string profesor, double calificacion,
-          string edificio, int numero, int capacidad);
+  Materia();
+  Materia(string, int, string, double, string, int, int);
 
   // Getters
   string get_nombre();
@@ -49,6 +49,13 @@ public:
 };
 
 // Constructor
+
+Materia::Materia(){
+  nombre = "";
+  nivel = 0;
+  profesor = "";
+  calificacion = 0.0;
+}
 
 Materia::Materia(string nombre, int nivel, string profesor, double calificacion,
                  string edificio, int numero, int capacidad)

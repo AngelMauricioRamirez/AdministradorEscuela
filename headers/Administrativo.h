@@ -27,8 +27,7 @@ private:
 public:
   // Constructor
   Administrativo();
-  Administrativo(string nombre, int edad, string telefono, string direccion,
-                 string departamento);
+  Administrativo(string, int, string, string, string);
 
   ~Administrativo() {}
 
