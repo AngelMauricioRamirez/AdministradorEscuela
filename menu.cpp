@@ -28,6 +28,8 @@
  * @return
  */
 
+// Obtiene la variable por referencia para que modifique
+// directamente a la variable y no cree copias
 void display_menu(Escuela &escuela) {
   // Variables iniciales
   int option = 0;
@@ -73,6 +75,7 @@ void display_menu(Escuela &escuela) {
     // Se hace un switch a la opción seleccionada
     // Solo acepta datos de tipo int, de lo contrario el programa crashea
     switch (option) {
+    // Agregar alumno
     case 1: {
       // Se despliega un menú para ingresar un alumno
       std::cout << "Proporciona el nombre: \n";
@@ -92,6 +95,7 @@ void display_menu(Escuela &escuela) {
       escuela.agregar_alumno(nombre, edad, telefono, direccion, argumento);
       break;
     }
+    // Agregar Profesor
     case 2: {
       // Se despliega un menú para ingresar un profesor
       std::cout << "Proporciona el nombre: \n";
@@ -111,6 +115,7 @@ void display_menu(Escuela &escuela) {
       escuela.agregar_profesor(nombre, edad, telefono, direccion, argumento);
       break;
     }
+    // Agregar Administrativo
     case 3: {
       // Se despliega un menú para ingresar un administrativo
       std::cout << "Proporciona el nombre: \n";
@@ -131,6 +136,7 @@ void display_menu(Escuela &escuela) {
                                      argumento);
       break;
     }
+    // Administrar Alumnos
     case 4: {
       // Pide la matricula del alumno
       std::cout << "Proporciona la matricula del alumno: \n";
@@ -142,28 +148,44 @@ void display_menu(Escuela &escuela) {
       if (escuela.get_alumno(argumento) != nullptr) {
         int op = 0;
         std::string nombreCurso;
-
+        // Muestra el nombre del alumno encontrado
         std::cout << escuela.get_alumno(argumento)->get_nombre() << "\n";
+        // Se despliega un menú para administrar a un alumno
         std::cout << "------------------------------ \n";
         std::cout << "1) Agregar curso \n";
         std::cout << "2) Asignar calificacion \n";
         std::cout << "3) Remover curso \n";
         std::cin >> op;
 
+        // Se hace un switch a la opción seleccionada
+        // Solo acepta datos de tipo int, de lo contrario el programa crashea
         switch (op) {
+        // Agregar curso
         case 1: {
           std::cout << "Cursos: \n";
+          // Recorre a los cursos que se tienen registrados y
+          // muestra su nombre y las materias registradas, esto
+          // sirve para que quien use el programa pueda ver las 
+          // caracteristicas del curso que quiere agregar.
           for (Curso *curso : cursos) {
             std::cout << "Nombre del curso: " << curso->get_nombre() << "\n";
             std::cout << "Materias: \n";
             curso->show_materias();
           }
 
+          // Pide el nombre del curso para agregarlo
           std::cout << "Proporciona el nombre del curso: \n";
           std::cin.ignore();
           std::getline(std::cin, nombreCurso);
 
+          // encontrado sirve para saber si se encontró el curso
           bool encontrado = false;
+          // Recorre los cursos que se tienen registrados y
+          // si el nombre coincide con el curso que se quiere agregar
+          // entonces lo agrega al alumno, si no
+          // se va a indicar que el curso no se encontró
+          // pero si el curso ya se tiene registrado, entonces 
+          // va a indicar que el curso ya se tiene registrado
           for (Curso *curso : cursos) {
             if (curso->get_nombre() == nombreCurso) {
               if (escuela.get_alumno(argumento)->get_curso(nombreCurso) ==
@@ -178,26 +200,36 @@ void display_menu(Escuela &escuela) {
               }
             }
           }
-
           if (!encontrado) {
             std::cout << "No se encontro el curso! \n";
           }
 
           break;
         }
+        // Asignar calificacion
         case 2: {
+          // Mustra todos los cursos que el alumno tiene registrados
           escuela.get_alumno(argumento)->show_cursos();
+          // Pide el nombre del curso para modificar la calificacion de las materias
           std::cout << "Proporciona el nombre del curso: \n";
           std::cin.ignore();
           std::getline(std::cin, nombreCurso);
 
+          // Crea un puntero que va a almacenar al curso que tenga el nombre 
+          // proporcionado por quien use el programa, esto sirve para
+          // que el código no quede tan extenso
           Curso *curso = escuela.get_alumno(argumento)->get_curso(nombreCurso);
+          // Si se encontró al curso, entonces pide el nombre de la materia
+          // a la que se le va a asignar la nueva calificación
           if (curso != nullptr) {
             std::string nombreMateria;
             std::cout << "Proporciona el nombre de la materia: \n";
             std::getline(std::cin, nombreMateria);
 
+            // Crea un puntero de la materia seleccionada
             Materia *materia = curso->get_materia(nombreMateria);
+            // Si se encontró la materia, entonces va a pedir
+            // la nueva calificacion a asignar
             if (materia != nullptr) {
               double calificacion;
               std::cout << "Proporciona la calificacion de la materia: \n";
@@ -214,12 +246,16 @@ void display_menu(Escuela &escuela) {
         }
 
         case 3: {
+          // Mustra todos los cursos que el alumno tiene registrados
           escuela.get_alumno(argumento)->show_cursos();
+          // Pide el nombre del curso para borrarlo
           std::cout << "Proporciona el nombre del curso: \n";
           std::cin.ignore();
           std::getline(std::cin, nombreCurso);
 
+          // Crea un objeto de tipo curso que va a almacenar los datos del curso
           Curso *curso = escuela.get_alumno(argumento)->get_curso(nombreCurso);
+          // Si se encontró al curso, entonces e elimina
           if (curso != nullptr) {
             escuela.get_alumno(argumento)->remove_curso(nombreCurso);
             std::cout << "Se ha removido el curso! \n";
@@ -238,6 +274,7 @@ void display_menu(Escuela &escuela) {
       }
       break;
     }
+    // Ver personas en la escuela
     case 5:
       escuela.show_personas();
       break;
@@ -247,5 +284,6 @@ void display_menu(Escuela &escuela) {
     } // END SWITCH
   }   // END WHILE
 
+  // Se borran los cursos
   delete c1, c2, c3, c4;
 }
