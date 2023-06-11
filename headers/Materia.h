@@ -33,6 +33,8 @@ public:
   Materia();
   Materia(string, int, string, double, string, int, int);
 
+  ~Materia() {}
+
   // Getters
   string get_nombre();
   int get_nivel();
