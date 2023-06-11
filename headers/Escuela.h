@@ -38,7 +38,7 @@ public:
   Escuela();
   Escuela(string, string, string);
 
-  ~Escuela() {}
+  ~Escuela();
 
   // Getters
   string get_nombre();
@@ -72,6 +72,12 @@ Escuela::Escuela(string nombre, string direccion, string telefono) {
   this->nombre = nombre;
   this->telefono = telefono;
   this->direccion = direccion;
+}
+
+Escuela::~Escuela(){
+  for (Persona *persona : personas) {
+    delete persona;
+  }
 }
 
 // Getters
