@@ -29,7 +29,7 @@ public:
   Alumno();
   Alumno(string, int, string, string, string);
 
-  ~Alumno() {};
+  ~Alumno();
 
   // Getters
   string get_matricula();
@@ -55,6 +55,12 @@ Alumno::Alumno(string nombre, int edad, string telefono, string direccion,
                string matricula)
     : Persona(nombre, edad, telefono, direccion) {
   this->matricula = matricula;
+}
+
+Alumno::~Alumno(){
+  for(Curso *curso : cursos){
+    delete curso;
+  }
 }
 
 // Alumno Getters
@@ -127,7 +133,6 @@ void Alumno::remove_curso(string nombreCurso) {
   // Se tiene que remover el curso buscandolo por su nombre
   for(int i = 0; i < cursos.size(); i++){
     if(cursos[i]->get_nombre() == nombreCurso){
-      delete cursos[i];
       cursos.erase(cursos.begin() + i);
       break; // Termina el bucle después de encontrar y eliminar la materia
     }
@@ -144,7 +149,7 @@ void Alumno::remove_curso(string nombreCurso) {
 void Alumno::show_cursos() {
   // Se tienen que mostrar todos los cursos que se tienen
   for (Curso *curso : cursos) {
-    cout << "- curso -" << curso->get_nombre() << "\n";
+    cout << "\nCurso: " << curso->get_nombre() << "\n";
     curso->show_materias();
   }
 }
