@@ -64,12 +64,13 @@ void display_menu(Escuela &escuela) {
   // corriendo
   while (option < 6) {
     // Se despliega el menú
-    std::cout << "1) Agregar alumno: \n";
-    std::cout << "2) Agregar profesor: \n";
-    std::cout << "3) Agregar administrativo: \n";
-    std::cout << "4) Administrar alumnos: \n";
+    std::cout << "1) Agregar alumno \n";
+    std::cout << "2) Agregar profesor \n";
+    std::cout << "3) Agregar administrativo \n";
+    std::cout << "4) Administrar alumnos \n";
     std::cout << "5) Ver personas en la escuela \n";
-    std::cout << "Proporciona la opcion: \n";
+    std::cout << "6) Salir del menu \n";
+    std::cout << "Proporciona la opcion (Numero): \n";
     std::cin >> option;
 
     // Se hace un switch a la opción seleccionada
@@ -147,127 +148,135 @@ void display_menu(Escuela &escuela) {
       // se despliega un menú para administrar a un alumno
       if (escuela.get_alumno(argumento) != nullptr) {
         int op = 0;
-        std::string nombreCurso;
-        // Muestra el nombre del alumno encontrado
-        std::cout << escuela.get_alumno(argumento)->get_nombre() << "\n";
-        // Se despliega un menú para administrar a un alumno
-        std::cout << "------------------------------ \n";
-        std::cout << "1) Agregar curso \n";
-        std::cout << "2) Asignar calificacion \n";
-        std::cout << "3) Remover curso \n";
-        std::cin >> op;
+        while (op < 4) {
+          std::string nombreCurso;
+          // Muestra el nombre del alumno encontrado
+          std::cout << escuela.get_alumno(argumento)->get_nombre() << "\n";
+          // Se despliega un menú para administrar a un alumno
+          std::cout << "------------------------------ \n";
+          std::cout << "1) Agregar curso \n";
+          std::cout << "2) Asignar calificacion \n";
+          std::cout << "3) Remover curso \n";
+          std::cout << "4) Salir de Administrador de alumnos \n";
+          std::cout << "Proporciona la opcion (Numero): \n";
+          std::cin >> op;
 
-        // Se hace un switch a la opción seleccionada
-        // Solo acepta datos de tipo int, de lo contrario el programa crashea
-        switch (op) {
-        // Agregar curso
-        case 1: {
-          std::cout << "Cursos: \n";
-          // Recorre a los cursos que se tienen registrados y
-          // muestra su nombre y las materias registradas, esto
-          // sirve para que quien use el programa pueda ver las 
-          // caracteristicas del curso que quiere agregar.
-          for (Curso *curso : cursos) {
-            std::cout << "Nombre del curso: " << curso->get_nombre() << "\n";
-            std::cout << "Materias: \n";
-            curso->show_materias();
-          }
-
-          // Pide el nombre del curso para agregarlo
-          std::cout << "Proporciona el nombre del curso: \n";
-          std::cin.ignore();
-          std::getline(std::cin, nombreCurso);
-
-          // encontrado sirve para saber si se encontró el curso
-          bool encontrado = false;
-          // Recorre los cursos que se tienen registrados y
-          // si el nombre coincide con el curso que se quiere agregar
-          // entonces lo agrega al alumno, si no
-          // se va a indicar que el curso no se encontró
-          // pero si el curso ya se tiene registrado, entonces 
-          // va a indicar que el curso ya se tiene registrado
-          for (Curso *curso : cursos) {
-            if (curso->get_nombre() == nombreCurso) {
-              if (escuela.get_alumno(argumento)->get_curso(nombreCurso) ==
-                  nullptr) {
-                escuela.get_alumno(argumento)->add_curso(curso);
-                std::cout << "Curso agregado! \n";
-                encontrado = true;
-                break;
-              } else {
-                std::cout << "El curso ya se tiene registrado! \n";
-                encontrado = true;
+          // Se hace un switch a la opción seleccionada
+          // Solo acepta datos de tipo int, de lo contrario el programa crashea
+          switch (op) {
+          // Agregar curso
+          case 1: {
+            // Recorre a los cursos que se tienen registrados y
+            // muestra su nombre y las materias registradas, esto
+            // sirve para que quien use el programa pueda ver las
+            // caracteristicas del curso que quiere agregar.
+            for (Curso *curso : cursos) {
+              if(curso != nullptr){
+                std::cout << "\nCurso: " << curso->get_nombre() << "\n";
+                curso->show_materias();
               }
             }
-          }
-          if (!encontrado) {
-            std::cout << "No se encontro el curso! \n";
-          }
 
-          break;
-        }
-        // Asignar calificacion
-        case 2: {
-          // Mustra todos los cursos que el alumno tiene registrados
-          escuela.get_alumno(argumento)->show_cursos();
-          // Pide el nombre del curso para modificar la calificacion de las materias
-          std::cout << "Proporciona el nombre del curso: \n";
-          std::cin.ignore();
-          std::getline(std::cin, nombreCurso);
+            // Pide el nombre del curso para agregarlo
+            std::cout << "Proporciona el nombre del curso: \n";
+            std::cin.ignore();
+            std::getline(std::cin, nombreCurso);
 
-          // Crea un puntero que va a almacenar al curso que tenga el nombre 
-          // proporcionado por quien use el programa, esto sirve para
-          // que el código no quede tan extenso
-          Curso *curso = escuela.get_alumno(argumento)->get_curso(nombreCurso);
-          // Si se encontró al curso, entonces pide el nombre de la materia
-          // a la que se le va a asignar la nueva calificación
-          if (curso != nullptr) {
-            std::string nombreMateria;
-            std::cout << "Proporciona el nombre de la materia: \n";
-            std::getline(std::cin, nombreMateria);
-
-            // Crea un puntero de la materia seleccionada
-            Materia *materia = curso->get_materia(nombreMateria);
-            // Si se encontró la materia, entonces va a pedir
-            // la nueva calificacion a asignar
-            if (materia != nullptr) {
-              double calificacion;
-              std::cout << "Proporciona la calificacion de la materia: \n";
-              std::cin >> calificacion;
-              materia->set_calificacion(calificacion);
-            } else {
-              std::cout << "No se encontro la materia! \n";
+            // encontrado sirve para saber si se encontró el curso
+            bool encontrado = false;
+            // Recorre los cursos que se tienen registrados y
+            // si el nombre coincide con el curso que se quiere agregar
+            // entonces lo agrega al alumno, si no
+            // se va a indicar que el curso no se encontró
+            // pero si el curso ya se tiene registrado, entonces
+            // va a indicar que el curso ya se tiene registrado
+            for (Curso *curso : cursos) {
+              if (curso->get_nombre() == nombreCurso) {
+                if (escuela.get_alumno(argumento)->get_curso(nombreCurso) ==
+                    nullptr) {
+                  escuela.get_alumno(argumento)->add_curso(curso);
+                  std::cout << "Curso agregado! \n";
+                  encontrado = true;
+                  break;
+                } else {
+                  std::cout << "El curso ya se tiene registrado! \n";
+                  encontrado = true;
+                }
+              }
             }
-          } else {
-            std::cout << "No se encontro el curso! \n";
+            if (!encontrado) {
+              std::cout << "No se encontro el curso! \n";
+            }
+
+            break;
+          }
+          // Asignar calificacion
+          case 2: {
+            // Mustra todos los cursos que el alumno tiene registrados
+            escuela.get_alumno(argumento)->show_cursos();
+            // Pide el nombre del curso para modificar la calificacion de las
+            // materias
+            std::cout << "Proporciona el nombre del curso: \n";
+            std::cin.ignore();
+            std::getline(std::cin, nombreCurso);
+
+            // Crea un puntero que va a almacenar al curso que tenga el nombre
+            // proporcionado por quien use el programa, esto sirve para
+            // que el código no quede tan extenso
+            Curso *curso =
+                escuela.get_alumno(argumento)->get_curso(nombreCurso);
+            // Si se encontró al curso, entonces pide el nombre de la materia
+            // a la que se le va a asignar la nueva calificación
+            if (curso != nullptr) {
+              std::string nombreMateria;
+              std::cout << "Proporciona el nombre de la materia: \n";
+              std::getline(std::cin, nombreMateria);
+
+              // Crea un puntero de la materia seleccionada
+              Materia materia(curso->get_materia(nombreMateria));
+              // Si se encontró la materia, entonces va a pedir
+              // la nueva calificacion a asignar
+              if (curso->get_materia(nombreMateria).get_nombre() != "") {
+                double calificacion;
+                std::cout << "Proporciona la calificacion de la materia: \n";
+                std::cin >> calificacion;
+                curso->get_materia(nombreMateria).set_calificacion(calificacion);
+              } else {
+                std::cout << "No se encontro la materia! \n";
+              }
+            } else {
+              std::cout << "No se encontro el curso! \n";
+            }
+
+            break;
           }
 
-          break;
-        }
+          case 3: {
+            // Mustra todos los cursos que el alumno tiene registrados
+            escuela.get_alumno(argumento)->show_cursos();
+            // Pide el nombre del curso para borrarlo
+            std::cout << "Proporciona el nombre del curso: \n";
+            std::cin.ignore();
+            std::getline(std::cin, nombreCurso);
 
-        case 3: {
-          // Mustra todos los cursos que el alumno tiene registrados
-          escuela.get_alumno(argumento)->show_cursos();
-          // Pide el nombre del curso para borrarlo
-          std::cout << "Proporciona el nombre del curso: \n";
-          std::cin.ignore();
-          std::getline(std::cin, nombreCurso);
+            // Crea un objeto de tipo curso que va a almacenar los datos del
+            // curso
+            Curso *curso =
+                escuela.get_alumno(argumento)->get_curso(nombreCurso);
+            // Si se encontró al curso, entonces e elimina
+            if (curso != nullptr) {
+              escuela.get_alumno(argumento)->remove_curso(nombreCurso);
+              std::cout << "Se ha removido el curso! \n";
+            } else {
+              std::cout << "No se encontro el curso! \n";
+            }
 
-          // Crea un objeto de tipo curso que va a almacenar los datos del curso
-          Curso *curso = escuela.get_alumno(argumento)->get_curso(nombreCurso);
-          // Si se encontró al curso, entonces e elimina
-          if (curso != nullptr) {
-            escuela.get_alumno(argumento)->remove_curso(nombreCurso);
-            std::cout << "Se ha removido el curso! \n";
-          } else {
-            std::cout << "No se encontro el curso! \n";
+            break;
           }
 
-          break;
-        }
-
-        default:
-          break;
+          default:
+            break;
+          }
         }
       } else {
         std::cout << "No se encuentra al alumno! \n";
