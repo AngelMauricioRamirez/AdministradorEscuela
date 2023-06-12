@@ -17,30 +17,29 @@
 #include <iostream>
 #include <string>
 #include <vector>
-using namespace std;
 
 class Curso {
 private:
   // Variables iniciales
-  string nombre;
-  vector<Materia> materias;
+  std::string nombre;
+  std::vector<Materia> materias;
 
 public:
   // Constructor
   Curso();
-  Curso(string, string, int, string, double, string, int, int);
+  Curso(std::string, std::string, int, std::string, double, std::string, int, int);
 
   ~Curso() {}
 
   // Getters
-  string get_nombre();
-  Materia get_materia(string);
+  std::string get_nombre();
+  Materia get_materia(std::string);
   // Setters
-  void set_nombre(string);
-  void set_materia(string, int, string, double, string, int, int);
+  void set_nombre(std::string);
+  void set_materia(std::string, int, std::string, double, std::string, int, int);
   // Metodos
   void show_materias();
-  void remove_materia(string);
+  void remove_materia(std::string);
 };
 
 // Constructor
@@ -49,8 +48,8 @@ Curso::Curso() {
   nombre = "";
 }
 
-Curso::Curso(string nombre, string nombreMat, int nivelMat, string profesorMat,
-             double calificacionMat, string edificio, int numero,
+Curso::Curso(std::string nombre, std::string nombreMat, int nivelMat, std::string profesorMat,
+             double calificacionMat, std::string edificio, int numero,
              int capacidad) {
   this->nombre = nombre;
   Materia materiaInicial(nombreMat, nivelMat, profesorMat, calificacionMat, edificio,
@@ -67,7 +66,7 @@ Curso::Curso(string nombre, string nombreMat, int nivelMat, string profesorMat,
  * @return nombre
  */
 
-string Curso::get_nombre() { return nombre; }
+std::string Curso::get_nombre() { return nombre; }
 
 /**
  * Busca una materia por su nombre y retorna
@@ -79,7 +78,7 @@ string Curso::get_nombre() { return nombre; }
  * @return nullptr
  */
 
-Materia Curso::get_materia(string nombre) {
+Materia Curso::get_materia(std::string nombre) {
   for (Materia materia : materias) {
     if (materia.get_nombre() == nombre) {
       return materia;
@@ -98,7 +97,7 @@ Materia Curso::get_materia(string nombre) {
  * @return
  */
 
-void Curso::set_nombre(string nombre) { this->nombre = nombre; }
+void Curso::set_nombre(std::string nombre) { this->nombre = nombre; }
 
 /**
  * Agrega una nueva materia al curso, obtiene
@@ -109,8 +108,8 @@ void Curso::set_nombre(string nombre) { this->nombre = nombre; }
  * @return
  */
 
-void Curso::set_materia(string nombre, int nivel, string profesor,
-                        double calificacion, string edificio, int numero,
+void Curso::set_materia(std::string nombre, int nivel, std::string profesor,
+                        double calificacion, std::string edificio, int numero,
                         int capacidad) {
   Materia materia(nombre, nivel, profesor, calificacion,
                                  edificio, numero, capacidad);
@@ -130,12 +129,12 @@ void Curso::set_materia(string nombre, int nivel, string profesor,
 void Curso::show_materias() {
   // Se imprimen todas las materias que el objeto tiene registradas
   for (Materia materia : materias) {
-    cout << "Nombre de la materia: " << materia.get_nombre() << "\n";
-    cout << "Nivel: " << materia.get_nivel() << "\n";
-    cout << "Calificacion: " << materia.get_calificacion() << "\n";
-    cout << "Profesor: " << materia.get_profesor() << "\n";
-    cout << "Edificio: " << materia.get_aula().get_edificio() << "\n";
-    cout << "Salon: " << materia.get_aula().get_numero() << "\n";
+    std::cout << "Nombre de la materia: " << materia.get_nombre() << "\n";
+    std::cout << "Nivel: " << materia.get_nivel() << "\n";
+    std::cout << "Calificacion: " << materia.get_calificacion() << "\n";
+    std::cout << "Profesor: " << materia.get_profesor() << "\n";
+    std::cout << "Edificio: " << materia.get_aula().get_edificio() << "\n";
+    std::cout << "Salon: " << materia.get_aula().get_numero() << "\n";
   }
 }
 
@@ -148,7 +147,7 @@ void Curso::show_materias() {
  * @return
  */
 
-void Curso::remove_materia(string nombre){
+void Curso::remove_materia(std::string nombre){
 //  Elimina la materia buscada por el nombre
   for(int i = 0; i < materias.size(); i++){
     if(materias[i].get_nombre() == nombre){

@@ -17,32 +17,31 @@
 #include <iostream>
 #include <string>
 #include <vector>
-using namespace std;
 
 class Alumno : public Persona {
 private:
-  string matricula;
-  vector<Curso *> cursos;
+  std::string matricula;
+  std::vector<Curso *> cursos;
 
 public:
   // Constructor
   Alumno();
-  Alumno(string, int, string, string, string);
+  Alumno(std::string, int, std::string, std::string, std::string);
 
   ~Alumno();
 
   // Getters
-  string get_matricula();
-  Curso *get_curso(string);
+  std::string get_matricula();
+  Curso *get_curso(std::string);
 
   // Setters
-  void set_matricula(string);
+  void set_matricula(std::string);
 
   // Metodos
   void add_curso(Curso *);
-  void remove_curso(string);
+  void remove_curso(std::string);
   void show_cursos();
-  string get_info() override;
+  std::string get_info() override;
 };
 
 // Constructor
@@ -51,8 +50,8 @@ Alumno::Alumno() : Persona(){
   matricula = "";
 }
 
-Alumno::Alumno(string nombre, int edad, string telefono, string direccion,
-               string matricula)
+Alumno::Alumno(std::string nombre, int edad, std::string telefono, std::string direccion,
+               std::string matricula)
     : Persona(nombre, edad, telefono, direccion) {
   this->matricula = matricula;
 }
@@ -72,7 +71,7 @@ Alumno::~Alumno(){
  * @return edificio
  */
 
-string Alumno::get_matricula() { return matricula; }
+std::string Alumno::get_matricula() { return matricula; }
 
 /**
  * Busca el curso indicado en los parametros
@@ -85,7 +84,7 @@ string Alumno::get_matricula() { return matricula; }
  * @return curso
  */
 
-Curso *Alumno::get_curso(string nombre) {
+Curso *Alumno::get_curso(std::string nombre) {
   for (Curso *curso : cursos) {
     if (curso->get_nombre() == nombre) {
       return curso;
@@ -103,7 +102,7 @@ Curso *Alumno::get_curso(string nombre) {
  * @return
  */
 
-void Alumno::set_matricula(string matricula) { this->matricula = matricula; }
+void Alumno::set_matricula(std::string matricula) { this->matricula = matricula; }
 
 // Alumno Metodos
 
@@ -129,7 +128,7 @@ void Alumno::add_curso(Curso *curso) {
  * @return
  */
 
-void Alumno::remove_curso(string nombreCurso) {
+void Alumno::remove_curso(std::string nombreCurso) {
   // Se tiene que remover el curso buscandolo por su nombre
   for(int i = 0; i < cursos.size(); i++){
     if(cursos[i]->get_nombre() == nombreCurso){
@@ -149,7 +148,7 @@ void Alumno::remove_curso(string nombreCurso) {
 void Alumno::show_cursos() {
   // Se tienen que mostrar todos los cursos que se tienen
   for (Curso *curso : cursos) {
-    cout << "\nCurso: " << curso->get_nombre() << "\n";
+    std::cout << "\nCurso: " << curso->get_nombre() << "\n";
     curso->show_materias();
   }
 }
@@ -161,8 +160,8 @@ void Alumno::show_cursos() {
  * @return
  */
 
-string Alumno::get_info(){
-  stringstream aux;
+std::string Alumno::get_info(){
+  std::stringstream aux;
   aux << "\nNombre: " << nombre << " Edad: " << edad << 
   " Telefono: " << telefono << " Direccion: " << direccion << " Matricula: " << matricula << "\n";
   return aux.str();

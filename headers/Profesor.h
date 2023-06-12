@@ -17,28 +17,27 @@
 #include <iostream>
 #include <string>
 #include <vector>
-using namespace std;
 
 class Profesor : public Persona {
 private:
   // Variables iniciales
-  string especialidad;
+  std::string especialidad;
 
 public:
   // Constructor
   Profesor();
-  Profesor(string, int, string, string, string);
+  Profesor(std::string, int, std::string, std::string, std::string);
 
   ~Profesor() {}
 
   // Getters
-  string get_especialidad();
+  std::string get_especialidad();
 
   // Setters
-  void set_especialidad(string);
+  void set_especialidad(std::string);
 
   // Metodos
-  string get_info() override;
+  std::string get_info() override;
 };
 
 // Constructor
@@ -47,8 +46,8 @@ Profesor::Profesor() : Persona() {
   especialidad = "";
 }
 
-Profesor::Profesor(string nombre, int edad, string telefono, string direccion,
-                   string especialidad)
+Profesor::Profesor(std::string nombre, int edad, std::string telefono, std::string direccion,
+                   std::string especialidad)
     : Persona(nombre, edad, telefono, direccion) {
   this->especialidad = especialidad;
 }
@@ -63,7 +62,7 @@ Profesor::Profesor(string nombre, int edad, string telefono, string direccion,
  * @return especialidad
  */
 
-string Profesor::get_especialidad() { return especialidad; }
+std::string Profesor::get_especialidad() { return especialidad; }
 
 // Profesor Setters
 
@@ -75,7 +74,7 @@ string Profesor::get_especialidad() { return especialidad; }
  * @return
  */
 
-void Profesor::set_especialidad(string especialidad) {
+void Profesor::set_especialidad(std::string especialidad) {
   this->especialidad = especialidad;
 }
 
@@ -88,8 +87,8 @@ void Profesor::set_especialidad(string especialidad) {
  * @return
  */
 
-string Profesor::get_info(){
-  stringstream aux;
+std::string Profesor::get_info(){
+  std::stringstream aux;
   aux << "\nNombre: " << nombre << " Edad: " << edad << 
   " Telefono: " << telefono << " Direccion: " << direccion << " Especialidad: " << especialidad << "\n";
   return aux.str();

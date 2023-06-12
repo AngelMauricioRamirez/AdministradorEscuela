@@ -19,37 +19,36 @@
 #include <sstream>
 #include <string>
 #include <vector>
-using namespace std;
 
 class Persona {
 protected:
   // Variables iniciales
-  string nombre;
+  std::string nombre;
   int edad;
-  string telefono;
-  string direccion;
+  std::string telefono;
+  std::string direccion;
 
 public:
   // Constructor
   Persona();
-  Persona(string, int, string, string);
+  Persona(std::string, int, std::string, std::string);
 
   virtual ~Persona() {};
 
   // Getters
-  string get_nombre();
+  std::string get_nombre();
   int get_edad();
-  string get_telefono();
-  string get_direccion();
+  std::string get_telefono();
+  std::string get_direccion();
 
   // Setters
-  void set_nombre(string);
+  void set_nombre(std::string);
   void set_edad(int);
-  void set_telefono(string);
-  void set_direccion(string);
+  void set_telefono(std::string);
+  void set_direccion(std::string);
 
   // Metodos
-  virtual string get_info() = 0;
+  virtual std::string get_info() = 0;
 };
 
 // Constructor
@@ -61,7 +60,7 @@ Persona::Persona(){
   direccion = "";
 }
 
-Persona::Persona(string nombre, int edad, string telefono, string direccion) {
+Persona::Persona(std::string nombre, int edad, std::string telefono, std::string direccion) {
   this->nombre = nombre;
   this->edad = edad;
   this->telefono = telefono;
@@ -78,7 +77,7 @@ Persona::Persona(string nombre, int edad, string telefono, string direccion) {
  * @return nombre
  */
 
-string Persona::get_nombre() { return nombre; }
+std::string Persona::get_nombre() { return nombre; }
 
 /**
  * Retorna la edad de la
@@ -98,7 +97,7 @@ int Persona::get_edad() { return edad; }
  * @return telefono
  */
 
-string Persona::get_telefono() { return telefono; }
+std::string Persona::get_telefono() { return telefono; }
 
 /**
  * Retorna la direccion de la
@@ -108,7 +107,7 @@ string Persona::get_telefono() { return telefono; }
  * @return direccion
  */
 
-string Persona::get_direccion() { return direccion; }
+std::string Persona::get_direccion() { return direccion; }
 
 // Persona Setters
 
@@ -120,7 +119,7 @@ string Persona::get_direccion() { return direccion; }
  * @return
  */
 
-void Persona::set_nombre(string nombre) { this->nombre = nombre; }
+void Persona::set_nombre(std::string nombre) { this->nombre = nombre; }
 
 /**
  * Actualiza la edad de
@@ -140,7 +139,7 @@ void Persona::set_edad(int edad) { this->edad = edad; }
  * @return
  */
 
-void Persona::set_telefono(string telefono) { this->telefono = telefono; }
+void Persona::set_telefono(std::string telefono) { this->telefono = telefono; }
 
 /**
  * Actualiza la direccion de
@@ -150,6 +149,6 @@ void Persona::set_telefono(string telefono) { this->telefono = telefono; }
  * @return
  */
 
-void Persona::set_direccion(string direccion) { this->direccion = direccion; }
+void Persona::set_direccion(std::string direccion) { this->direccion = direccion; }
 
 #endif // PERSONA_H_

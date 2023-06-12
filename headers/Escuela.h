@@ -23,41 +23,40 @@
 #include <iostream>
 #include <string>
 #include <vector>
-using namespace std;
 
 class Escuela {
 private:
   // Variables iniciales
-  string nombre;
-  string direccion;
-  string telefono;
-  vector<Persona *> personas;
+  std::string nombre;
+  std::string direccion;
+  std::string telefono;
+  std::vector<Persona *> personas;
 
 public:
   // Constructor
   Escuela();
-  Escuela(string, string, string);
+  Escuela(std::string, std::string, std::string);
 
   ~Escuela();
 
   // Getters
-  string get_nombre();
-  string get_direccion();
-  string get_telefono();
+  std::string get_nombre();
+  std::string get_direccion();
+  std::string get_telefono();
 
   // Setters
-  void set_nombre(string);
-  void set_direccion(string);
-  void set_telefono(string);
-  Alumno *get_alumno(string);
-  Profesor *get_profesor(string, string);
-  Administrativo *get_administrativo(string, string);
+  void set_nombre(std::string);
+  void set_direccion(std::string);
+  void set_telefono(std::string);
+  Alumno *get_alumno(std::string);
+  Profesor *get_profesor(std::string, std::string);
+  Administrativo *get_administrativo(std::string, std::string);
 
   // Metodos
   void show_personas();
-  void agregar_alumno(string, int, string, string, string);
-  void agregar_profesor(string, int, string, string, string);
-  void agregar_administrativo(string, int, string, string, string);
+  void agregar_alumno(std::string, int, std::string, std::string, std::string);
+  void agregar_profesor(std::string, int, std::string, std::string, std::string);
+  void agregar_administrativo(std::string, int, std::string, std::string, std::string);
 };
 
 // Constructor
@@ -68,7 +67,7 @@ Escuela::Escuela() {
   direccion = "";
 }
 
-Escuela::Escuela(string nombre, string direccion, string telefono) {
+Escuela::Escuela(std::string nombre, std::string direccion, std::string telefono) {
   this->nombre = nombre;
   this->telefono = telefono;
   this->direccion = direccion;
@@ -89,7 +88,7 @@ Escuela::~Escuela(){
  * @return nombre
  */
 
-string Escuela::get_nombre() { return nombre; };
+std::string Escuela::get_nombre() { return nombre; };
 
 /**
  * Retorna la direccion de
@@ -98,7 +97,7 @@ string Escuela::get_nombre() { return nombre; };
  * @return direccion
  */
 
-string Escuela::get_direccion() { return direccion; };
+std::string Escuela::get_direccion() { return direccion; };
 
 /**
  * Retorna el telefono de
@@ -107,7 +106,7 @@ string Escuela::get_direccion() { return direccion; };
  * @return telefono
  */
 
-string Escuela::get_telefono() { return telefono; };
+std::string Escuela::get_telefono() { return telefono; };
 
 /**
  * Busca un alumno por su matricula y retorna
@@ -121,7 +120,7 @@ string Escuela::get_telefono() { return telefono; };
  * @return nullptr
  */
 
-Alumno *Escuela::get_alumno(string matricula) {
+Alumno *Escuela::get_alumno(std::string matricula) {
   for (Persona *persona : personas) {
     if (dynamic_cast<Alumno *>(persona)->get_matricula() == matricula) {
       return dynamic_cast<Alumno *>(persona);
@@ -142,7 +141,7 @@ Alumno *Escuela::get_alumno(string matricula) {
  * @return nullptr
  */
 
-Profesor *Escuela::get_profesor(string nombre, string especialidad) {
+Profesor *Escuela::get_profesor(std::string nombre, std::string especialidad) {
   for (Persona *persona : personas) {
     if (persona->get_nombre() == nombre && dynamic_cast<Profesor *>(persona)->get_especialidad() == especialidad) {
       return dynamic_cast<Profesor *>(persona);
@@ -163,7 +162,7 @@ Profesor *Escuela::get_profesor(string nombre, string especialidad) {
  * @return nullptr
  */
 
-Administrativo *Escuela::get_administrativo(string nombre, string departamento){
+Administrativo *Escuela::get_administrativo(std::string nombre, std::string departamento){
   for (Persona *persona : personas) {
     if (persona->get_nombre() == nombre && dynamic_cast<Administrativo *>(persona)->get_departamento() == departamento) {
       return dynamic_cast<Administrativo *>(persona);
@@ -182,7 +181,7 @@ Administrativo *Escuela::get_administrativo(string nombre, string departamento){
  * @return
  */
 
-void Escuela::set_nombre(string nombre) { this->nombre = nombre; }
+void Escuela::set_nombre(std::string nombre) { this->nombre = nombre; }
 
 /**
  * Actualiza la direccion que se tiene
@@ -192,7 +191,7 @@ void Escuela::set_nombre(string nombre) { this->nombre = nombre; }
  * @return
  */
 
-void Escuela::set_direccion(string direccion) { this->direccion = direccion; }
+void Escuela::set_direccion(std::string direccion) { this->direccion = direccion; }
 
 /**
  * Actualiza el telefono que se tiene
@@ -202,7 +201,7 @@ void Escuela::set_direccion(string direccion) { this->direccion = direccion; }
  * @return
  */
 
-void Escuela::set_telefono(string telefono) { this->telefono = telefono; }
+void Escuela::set_telefono(std::string telefono) { this->telefono = telefono; }
 
 // Metodos
 
@@ -217,7 +216,7 @@ void Escuela::set_telefono(string telefono) { this->telefono = telefono; }
 
 void Escuela::show_personas() {
   for (Persona *persona : personas) {
-    cout << persona->get_info() << "\n";
+    std::cout << persona->get_info() << "\n";
   }
 }
 
@@ -230,8 +229,8 @@ void Escuela::show_personas() {
  * @return
  */
 
-void Escuela::agregar_alumno(string nombre, int edad, string telefono,
-                             string direccion, string matricula) {
+void Escuela::agregar_alumno(std::string nombre, int edad, std::string telefono,
+                             std::string direccion, std::string matricula) {
   Persona *persona = new Alumno(nombre, edad, telefono, direccion, matricula);
 
   personas.push_back(persona);
@@ -246,8 +245,8 @@ void Escuela::agregar_alumno(string nombre, int edad, string telefono,
  * @return
  */
 
-void Escuela::agregar_profesor(string nombre, int edad, string telefono,
-                             string direccion, string especialidad) {
+void Escuela::agregar_profesor(std::string nombre, int edad, std::string telefono,
+                             std::string direccion, std::string especialidad) {
   Persona *persona = new Profesor(nombre, edad, telefono, direccion, especialidad);
 
   personas.push_back(persona);
@@ -262,8 +261,8 @@ void Escuela::agregar_profesor(string nombre, int edad, string telefono,
  * @return
  */
 
-void Escuela::agregar_administrativo(string nombre, int edad, string telefono,
-                              string direccion, string departamento){
+void Escuela::agregar_administrativo(std::string nombre, int edad, std::string telefono,
+                              std::string direccion, std::string departamento){
   Persona *persona = new Administrativo(nombre, edad, telefono, direccion, departamento);
 
   personas.push_back(persona);

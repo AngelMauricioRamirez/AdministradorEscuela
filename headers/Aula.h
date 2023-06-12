@@ -16,29 +16,28 @@
 #include <iostream>
 #include <string>
 #include <vector>
-using namespace std;
 
 class Aula {
 private:
   // Variables iniciales
-  string edificio;
+  std::string edificio;
   int numero;
   int capacidad;
 
 public:
   // Constructor
   Aula();
-  Aula(string, int, int);
+  Aula(std::string, int, int);
 
   ~Aula() {}
 
   // Getters
-  string get_edificio();
+  std::string get_edificio();
   int get_numero();
   int get_capacidad();
 
   // Setters
-  void set_edificio(string);
+  void set_edificio(std::string);
   void set_numero(int);
   void set_capacidad(int);
 };
@@ -51,7 +50,7 @@ Aula::Aula(){
   capacidad = 0;
 }
 
-Aula::Aula(string edificio, int numero, int capacidad) {
+Aula::Aula(std::string edificio, int numero, int capacidad) {
   this->edificio = edificio;
   this->numero = numero;
   this->capacidad = capacidad;
@@ -66,7 +65,7 @@ Aula::Aula(string edificio, int numero, int capacidad) {
  * @return edificio
  */
 
-string Aula::get_edificio() { return edificio; }
+std::string Aula::get_edificio() { return edificio; }
 
 /**
  * Retorna el numero de salon en
@@ -98,7 +97,7 @@ int Aula::get_capacidad() { return capacidad; }
  * @return
  */
 
-void Aula::set_edificio(string edificio) { this->edificio = edificio; }
+void Aula::set_edificio(std::string edificio) { this->edificio = edificio; }
 
 /**
  * Actualiza el numero de salon en donde

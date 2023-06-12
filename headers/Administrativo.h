@@ -17,28 +17,27 @@
 #include <iostream>
 #include <string>
 #include <vector>
-using namespace std;
 
 class Administrativo : public Persona {
 private:
   // Variables iniciales
-  string departamento;
+  std::string departamento;
 
 public:
   // Constructor
   Administrativo();
-  Administrativo(string, int, string, string, string);
+  Administrativo(std::string, int, std::string, std::string, std::string);
 
   ~Administrativo() {}
 
   // Getters
-  string get_departamento();
+  std::string get_departamento();
 
   // Setters
-  void set_departamento(string);
+  void set_departamento(std::string);
 
   // Metodos
-  string get_info() override;
+  std::string get_info() override;
 };
 
 // Constructor
@@ -47,8 +46,8 @@ Administrativo::Administrativo() : Persona(){
   departamento = "";
 }
 
-Administrativo::Administrativo(string nombre, int edad, string telefono,
-                               string direccion, string departamento)
+Administrativo::Administrativo(std::string nombre, int edad, std::string telefono,
+                               std::string direccion, std::string departamento)
     : Persona(nombre, edad, telefono, direccion) {
   this->departamento = departamento;
 }
@@ -63,7 +62,7 @@ Administrativo::Administrativo(string nombre, int edad, string telefono,
  * @return departamento
  */
 
-string Administrativo::get_departamento() { return departamento; }
+std::string Administrativo::get_departamento() { return departamento; }
 
 // Administrativo Setters
 
@@ -75,7 +74,7 @@ string Administrativo::get_departamento() { return departamento; }
  * @return
  */
 
-void Administrativo::set_departamento(string departamento) {
+void Administrativo::set_departamento(std::string departamento) {
   this->departamento = departamento;
 }
 
@@ -88,8 +87,8 @@ void Administrativo::set_departamento(string departamento) {
  * @return
  */
 
-string Administrativo::get_info(){
-  stringstream aux;
+std::string Administrativo::get_info(){
+  std::stringstream aux;
   aux << "\nNombre: " << nombre << " Edad: " << edad << 
   " Telefono: " << telefono << " Direccion: " << direccion << " Departamento: " << departamento << "\n";
   return aux.str();

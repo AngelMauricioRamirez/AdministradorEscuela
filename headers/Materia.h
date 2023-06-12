@@ -17,36 +17,35 @@
 #include <iostream>
 #include <string>
 #include <vector>
-using namespace std;
 
 class Materia {
 private:
   // Variables iniciales
-  string nombre;
+  std::string nombre;
   int nivel;
-  string profesor;
+  std::string profesor;
   Aula aula;
   double calificacion;
 
 public:
   // Constructor
   Materia();
-  Materia(string, int, string, double, string, int, int);
+  Materia(std::string, int, std::string, double, std::string, int, int);
 
   ~Materia() {}
 
   // Getters
-  string get_nombre();
+  std::string get_nombre();
   int get_nivel();
-  string get_profesor();
+  std::string get_profesor();
   Aula get_aula();
   double get_calificacion();
 
   // Setters
-  void set_nombre(string);
+  void set_nombre(std::string);
   void set_nivel(int);
-  void set_profesor(string);
-  void set_aula(string, int, int);
+  void set_profesor(std::string);
+  void set_aula(std::string, int, int);
   void set_calificacion(double);
 };
 
@@ -59,8 +58,8 @@ Materia::Materia(){
   calificacion = 0.0;
 }
 
-Materia::Materia(string nombre, int nivel, string profesor, double calificacion,
-                 string edificio, int numero, int capacidad)
+Materia::Materia(std::string nombre, int nivel, std::string profesor, double calificacion,
+                 std::string edificio, int numero, int capacidad)
     : aula(edificio, numero, capacidad) {
   this->nombre = nombre;
   this->nivel = nivel;
@@ -78,7 +77,7 @@ Materia::Materia(string nombre, int nivel, string profesor, double calificacion,
  * @return nombre
  */
 
-string Materia::get_nombre() { return nombre; }
+std::string Materia::get_nombre() { return nombre; }
 
 /**
  * Retorna el nivel de la materia
@@ -97,7 +96,7 @@ int Materia::get_nivel() { return nivel; }
  * @return profesor
  */
 
-string Materia::get_profesor() { return profesor; }
+std::string Materia::get_profesor() { return profesor; }
 
 /**
  * Retorna el Aula donde se va a tomar
@@ -129,7 +128,7 @@ double Materia::get_calificacion() { return calificacion; }
  * @return
  */
 
-void Materia::set_nombre(string nombre) { this->nombre = nombre; }
+void Materia::set_nombre(std::string nombre) { this->nombre = nombre; }
 
 /**
  * Actualiza el nivel que se tiene
@@ -149,7 +148,7 @@ void Materia::set_nivel(int nivel) { this->nivel = nivel; }
  * @return
  */
 
-void Materia::set_profesor(string profesor) { this->profesor = profesor; }
+void Materia::set_profesor(std::string profesor) { this->profesor = profesor; }
 
 /**
  * Actualiza el aula en donde se va a tomar
@@ -160,7 +159,7 @@ void Materia::set_profesor(string profesor) { this->profesor = profesor; }
  * @return
  */
 
-void Materia::set_aula(string edificio, int numero, int capacidad) {
+void Materia::set_aula(std::string edificio, int numero, int capacidad) {
   aula.set_edificio(edificio);
   aula.set_numero(numero);
   aula.set_capacidad(capacidad);
