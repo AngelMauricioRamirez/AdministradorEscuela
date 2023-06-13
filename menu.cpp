@@ -197,6 +197,7 @@ void display_menu(Escuela &escuela) {
                 } else {
                   std::cout << "El curso ya se tiene registrado! \n";
                   encontrado = true;
+                  break;
                 }
               }
             }
