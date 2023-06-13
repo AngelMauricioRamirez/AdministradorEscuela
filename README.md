@@ -10,15 +10,14 @@ Haber instalado un [compilador de c++](https://sourceforge.net/projects/mingw/fi
 
 > correr en linux: "/a.out"
 
-Este administrador de escuela cuenta con la capacidad de administrar profesores y alumnos registrados, así como las materias, cursos y aulas, su objetivo es brindar una representación visual y estructurada del sistema que permita comprender y diseñar el funcionamiento de la gestión académica y administrativa de la escuela.
+Este administrador de escuela cuenta con la capacidad de administrar profesores y alumnos registrados, así como las materias y cursos que tiene registrados un alumno, su objetivo es brindar una representación visual y estructurada del sistema que permita comprender y diseñar el funcionamiento de la gestión académica y administrativa de la escuela.
 
 ## Objetivos
 
  1. El diagrama de clases muestra las entidades principales de la escuela, como profesores, alumnos, materias, cursos y aulas, y cómo están relacionadas entre sí. Esto proporciona una visión clara de la organización y estructura del sistema.
- 2. El diagrama de clases permite gestionar la información de los profesores y alumnos registrados en la escuela. Se definen atributos y métodos relevantes para almacenar y acceder a los datos de cada individuo, como nombre, edad, dirección, teléfono, entre otros.
- 3. El diagrama de clases proporciona una representación de las materias y los cursos ofrecidos por la escuela. Permite asignar profesores a las materias, así como alumnos a los cursos correspondientes.
- 4. El diagrama de clases incluye la representación de las aulas disponibles en la escuela. Se definen atributos relacionados, como el número de aula y la capacidad, para facilitar la asignación adecuada de aulas a los cursos.
- 5. El diagrama de clases permite asignar departamentos a los administrativos de la escuela. Esto ayuda a organizar y estructurar la gestión administrativa de la escuela, permitiendo una asignación eficiente de responsabilidades y tareas.
+ 2. Permite gestionar la información de los profesores y alumnos registrados en la escuela. Se definen atributos y métodos relevantes para almacenar y acceder a los datos de cada individuo, como nombre, edad, dirección, teléfono, entre otros.
+ 3. Proporciona una representación de las materias y los cursos ofrecidos por la escuela. Permite asignar calificaciones a las materias, así como que cada alumno agregue sus cursos correspondientes.
+ 4. Permite asignar departamentos a los administrativos de la escuela. Esto ayuda a organizar y estructurar la gestión administrativa de la escuela, permitiendo una asignación eficiente de responsabilidades y tareas.
 
 ***
 
@@ -38,12 +37,20 @@ La forma más facil de utilizar el programa es la siguiente:
 (3) Agregar administrativo:
 (4) Administrar alumnos:
 (5) Ver personas en la escuela
-Proporciona la opcion: 
+Proporciona la opcion (Numero): 
 ```
 
  2. La consola te pedirá datos como el Nombre, Edad, Telefono, Direccion y Matricula (En este caso).
 
-> Se debe de considerar que todos son tipos de dato string, excepto Edad
+ > Se debe de considerar que todos son tipos de dato string, excepto Edad
+
+ ```bash
+ Proporciona el nombre:
+ Proporciona la edad:
+ Proporciona el numero de telefono:
+ Proporciona la direccion:
+ Proporciona la matricula:
+```
 
  3. Dirigete a la opción Administrar Alumnos.
 
@@ -53,10 +60,26 @@ Proporciona la opcion:
 (3) Agregar administrativo:
 (4) Administrar alumnos: <-
 (5) Ver personas en la escuela
-Proporciona la opcion:
+Proporciona la opcion (Numero):
 ```
 
  4. Ahora podrás agregar o remover cursos para un alumno específico. Además, podrás administrar las calificaciones de cada materia para cada alumno. Ten en cuenta que la búsqueda de un alumno se realiza mediante su matrícula, por lo que cada matrícula debe ser única.
+
+ ```bash
+ (1) Agregar curso
+ (2) Asignar calificacion
+ (3) Remover curso
+ (4) Salir de Administrador de alumnos
+ Proporciona la opcion (Numero):
+```
+
+5. Para agregar un curso o eliminar un curso, se pedirá que proporciones el nombre del curso, este se encuentra listado antes de que proporciones el nombre del curso y se encuentra de la siguiente forma:
+
+Ejemplo:
+
+> Curso: F203
+
+6. Si se requiere del nombre del curso o del nombre de la materia, se tiene que proporcionar exactamente como se tiene registrado.
 
 ## Consideraciones
 
@@ -76,10 +99,6 @@ Entrada incorrecta de datos:
 
 - Si se ingresan datos no válidos al solicitar información del alumno, profesor o administrativo (por ejemplo, ingresar una cadena en lugar de un número para la edad), podría causar errores.
 
-Falta de manejo de memoria:
-
-- No se realiza una liberación de memoria adecuada para los objetos Curso creados dinámicamente con new.
-
 Búsqueda de cursos y materias:
 
 - Al buscar cursos y materias en las listas, se utilizan comparaciones de cadenas exactas. Si hay errores tipográficos o diferencias de mayúsculas y minúsculas en los nombres proporcionados por el usuario, la búsqueda no será exitosa.
@@ -96,11 +115,4 @@ Manejo de excepciones:
 
 ## Correcciones
 
-***Se corrigió el UML para que fuera más congruente con sus métodos.
-
-***Se corrigieron los constructores de cada clase para que el código quede mejor ordenado.
-
-***Se agregaron las consideraciones del programa.
-
-***Se explica como usar el programa.
-
+***Se identificaron los casos en donde puede dejar de funcionar el programa
