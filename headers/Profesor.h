@@ -14,7 +14,6 @@
 #define PROFESOR_H_
 
 #include "Persona.h"
-#include <iostream>
 #include <string>
 #include <vector>
 

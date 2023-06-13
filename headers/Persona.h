@@ -15,7 +15,6 @@
 #define PERSONA_H_
 
 #include "Curso.h"
-#include <iostream>
 #include <sstream>
 #include <string>
 #include <vector>

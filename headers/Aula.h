@@ -13,7 +13,6 @@
 #ifndef AULA_H_
 #define AULA_H_
 
-#include <iostream>
 #include <string>
 #include <vector>
 

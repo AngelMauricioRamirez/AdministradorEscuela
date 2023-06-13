@@ -20,7 +20,7 @@
 #include "Alumno.h"
 #include "Persona.h"
 #include "Profesor.h"
-#include <iostream>
+#include <sstream>
 #include <string>
 #include <vector>
 
@@ -43,17 +43,17 @@ public:
   std::string get_nombre();
   std::string get_direccion();
   std::string get_telefono();
+  Alumno *get_alumno(std::string);
+  Profesor *get_profesor(std::string, std::string);
+  Administrativo *get_administrativo(std::string, std::string);
 
   // Setters
   void set_nombre(std::string);
   void set_direccion(std::string);
   void set_telefono(std::string);
-  Alumno *get_alumno(std::string);
-  Profesor *get_profesor(std::string, std::string);
-  Administrativo *get_administrativo(std::string, std::string);
 
   // Metodos
-  void show_personas();
+  std::string show_personas();
   void agregar_alumno(std::string, int, std::string, std::string, std::string);
   void agregar_profesor(std::string, int, std::string, std::string, std::string);
   void agregar_administrativo(std::string, int, std::string, std::string, std::string);
@@ -214,10 +214,14 @@ void Escuela::set_telefono(std::string telefono) { this->telefono = telefono; }
  * @return
  */
 
-void Escuela::show_personas() {
+std::string Escuela::show_personas() {
+
+  std::stringstream aux;
   for (Persona *persona : personas) {
-    std::cout << persona->get_info() << "\n";
+    aux << persona->get_info() << "\n";
   }
+
+  return aux.str();
 }
 
 /**

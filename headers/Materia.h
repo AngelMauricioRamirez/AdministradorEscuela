@@ -14,7 +14,6 @@
 #define MATERIA_H_
 
 #include "Aula.h"
-#include <iostream>
 #include <string>
 #include <vector>
 

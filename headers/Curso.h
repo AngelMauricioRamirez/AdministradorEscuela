@@ -14,7 +14,7 @@
 #define CURSO_H_
 
 #include "Materia.h"
-#include <iostream>
+#include <sstream>
 #include <string>
 #include <vector>
 
@@ -22,7 +22,7 @@ class Curso {
 private:
   // Variables iniciales
   std::string nombre;
-  std::vector<Materia> materias;
+  std::vector<Materia *> materias;
 
 public:
   // Constructor
@@ -33,12 +33,15 @@ public:
 
   // Getters
   std::string get_nombre();
-  Materia get_materia(std::string);
+  Materia* get_materia(std::string);
+  std::vector<Materia *> get_materias();
+
   // Setters
   void set_nombre(std::string);
   void set_materia(std::string, int, std::string, double, std::string, int, int);
+
   // Metodos
-  void show_materias();
+  std::string show_materias();
   void remove_materia(std::string);
 };
 
@@ -52,7 +55,7 @@ Curso::Curso(std::string nombre, std::string nombreMat, int nivelMat, std::strin
              double calificacionMat, std::string edificio, int numero,
              int capacidad) {
   this->nombre = nombre;
-  Materia materiaInicial(nombreMat, nivelMat, profesorMat, calificacionMat, edificio,
+  Materia *materiaInicial = new Materia(nombreMat, nivelMat, profesorMat, calificacionMat, edificio,
                   numero, capacidad);
   materias.push_back(materiaInicial);
 }
@@ -78,13 +81,25 @@ std::string Curso::get_nombre() { return nombre; }
  * @return nullptr
  */
 
-Materia Curso::get_materia(std::string nombre) {
-  for (Materia materia : materias) {
-    if (materia.get_nombre() == nombre) {
+Materia* Curso::get_materia(std::string nombre) {
+  for (Materia *materia : materias) {
+    if (materia->get_nombre() == nombre) {
       return materia;
     }
   }
-  return Materia(); // La materia no se encontró
+  return nullptr; // La materia no se encontró
+}
+
+/**
+ * Retorna el vector de las materias
+ * que se tienen registradas en los cursos
+ *
+ *
+ * @return materias
+ */
+
+std::vector<Materia *> Curso::get_materias() {
+  return materias;
 }
 
 // Setters
@@ -111,7 +126,7 @@ void Curso::set_nombre(std::string nombre) { this->nombre = nombre; }
 void Curso::set_materia(std::string nombre, int nivel, std::string profesor,
                         double calificacion, std::string edificio, int numero,
                         int capacidad) {
-  Materia materia(nombre, nivel, profesor, calificacion,
+  Materia *materia = new Materia(nombre, nivel, profesor, calificacion,
                                  edificio, numero, capacidad);
   materias.push_back(materia);
 }
@@ -123,19 +138,22 @@ void Curso::set_materia(std::string nombre, int nivel, std::string profesor,
  * muestra el nombre de la materia, nivel, calificacion y profesor
  *
  *
- * @return
+ * @return aux
  */
 
-void Curso::show_materias() {
+std::string Curso::show_materias() {
   // Se imprimen todas las materias que el objeto tiene registradas
-  for (Materia materia : materias) {
-    std::cout << "Nombre de la materia: " << materia.get_nombre() << "\n";
-    std::cout << "Nivel: " << materia.get_nivel() << "\n";
-    std::cout << "Calificacion: " << materia.get_calificacion() << "\n";
-    std::cout << "Profesor: " << materia.get_profesor() << "\n";
-    std::cout << "Edificio: " << materia.get_aula().get_edificio() << "\n";
-    std::cout << "Salon: " << materia.get_aula().get_numero() << "\n";
+  std::stringstream aux;
+  for (Materia *materia : materias) {
+    aux << "Nombre de la materia: " << materia->get_nombre() << "\n";
+    aux << "Nivel: " << materia->get_nivel() << "\n";
+    aux << "Calificacion: " << materia->get_calificacion() << "\n";
+    aux << "Profesor: " << materia->get_profesor() << "\n";
+    aux << "Edificio: " << materia->get_aula().get_edificio() << "\n";
+    aux << "Salon: " << materia->get_aula().get_numero() << "\n";
   }
+
+  return aux.str();
 }
 
 /**
@@ -150,7 +168,7 @@ void Curso::show_materias() {
 void Curso::remove_materia(std::string nombre){
 //  Elimina la materia buscada por el nombre
   for(int i = 0; i < materias.size(); i++){
-    if(materias[i].get_nombre() == nombre){
+    if(materias[i]->get_nombre() == nombre){
       materias.erase(materias.begin() + i);
       break; // Termina el bucle después de encontrar y eliminar la materia
     }

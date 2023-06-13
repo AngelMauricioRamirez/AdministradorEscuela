@@ -6,7 +6,7 @@
  */
 
 /*
- * Clase Persona contiene los datos
+ * Clase Alumno contiene los datos
  * necesarios para registrar a un alumno.
  */
 
@@ -14,33 +14,32 @@
 #define ALUMNO_H_
 
 #include "Persona.h"
-#include <iostream>
 #include <string>
 #include <vector>
 
 class Alumno : public Persona {
 private:
   std::string matricula;
-  std::vector<Curso *> cursos;
+  std::vector<Curso> cursos;
 
 public:
   // Constructor
   Alumno();
   Alumno(std::string, int, std::string, std::string, std::string);
 
-  ~Alumno();
+  ~Alumno() {}
 
   // Getters
   std::string get_matricula();
-  Curso *get_curso(std::string);
+  Curso get_curso(std::string);
 
   // Setters
   void set_matricula(std::string);
 
   // Metodos
-  void add_curso(Curso *);
+  void add_curso(Curso);
   void remove_curso(std::string);
-  void show_cursos();
+  std::string show_cursos();
   std::string get_info() override;
 };
 
@@ -54,12 +53,6 @@ Alumno::Alumno(std::string nombre, int edad, std::string telefono, std::string d
                std::string matricula)
     : Persona(nombre, edad, telefono, direccion) {
   this->matricula = matricula;
-}
-
-Alumno::~Alumno(){
-  for(Curso *curso : cursos){
-    delete curso;
-  }
 }
 
 // Alumno Getters
@@ -84,13 +77,13 @@ std::string Alumno::get_matricula() { return matricula; }
  * @return curso
  */
 
-Curso *Alumno::get_curso(std::string nombre) {
-  for (Curso *curso : cursos) {
-    if (curso->get_nombre() == nombre) {
+Curso Alumno::get_curso(std::string nombre) {
+  for (Curso curso : cursos) {
+    if (curso.get_nombre() == nombre) {
       return curso;
     }
   }
-  return nullptr; // El curso no se encontró
+  return Curso(); // El curso no se encontró
 }
 
 // Alumno Setters
@@ -114,9 +107,26 @@ void Alumno::set_matricula(std::string matricula) { this->matricula = matricula;
  * @return
  */
 
-void Alumno::add_curso(Curso *curso) {
-  // Se tiene que agregar un curso a la lista cursos
-  cursos.push_back(curso);
+void Alumno::add_curso(Curso curso) {
+  // Se crea un nuevo curso para agregarlo a la lista de cursos
+  Curso new_curso;
+  new_curso.set_nombre(curso.get_nombre());
+  std::vector<Materia *> materias = curso.get_materias();
+
+  // Se recorre la lista de materias para obtener los datos necesarios
+  // para crear el nuevo curso. Esto se debe a que no se puede pasar el
+  // objeto completo a la lista de cursos, ya que también se pasarían los
+  // punteros de las materias. Si se modifican los datos de la materia,
+  // también se afectaría al curso que se pasó como parámetro.
+
+  for(Materia *materia : materias){
+    Materia new_materia;
+    new_curso.set_materia(materia->get_nombre(), materia->get_nivel(), 
+    materia->get_profesor(), materia->get_calificacion(), materia->get_aula().get_edificio(),
+    materia->get_aula().get_numero(), materia->get_aula().get_capacidad());
+  }
+
+  cursos.push_back(new_curso);
 }
 
 /**
@@ -131,7 +141,7 @@ void Alumno::add_curso(Curso *curso) {
 void Alumno::remove_curso(std::string nombreCurso) {
   // Se tiene que remover el curso buscandolo por su nombre
   for(int i = 0; i < cursos.size(); i++){
-    if(cursos[i]->get_nombre() == nombreCurso){
+    if(cursos[i].get_nombre() == nombreCurso){
       cursos.erase(cursos.begin() + i);
       break; // Termina el bucle después de encontrar y eliminar la materia
     }
@@ -145,12 +155,15 @@ void Alumno::remove_curso(std::string nombreCurso) {
  * @return
  */
 
-void Alumno::show_cursos() {
+std::string Alumno::show_cursos() {
   // Se tienen que mostrar todos los cursos que se tienen
-  for (Curso *curso : cursos) {
-    std::cout << "\nCurso: " << curso->get_nombre() << "\n";
-    curso->show_materias();
+  std::stringstream aux;
+  for (Curso curso : cursos) {
+    aux << "\nCurso: " << curso.get_nombre() << "\n";
+    aux << curso.show_materias() << "\n";
   }
+
+  return aux.str();
 }
 
 /**
